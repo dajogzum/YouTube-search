@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Videos.css';
 import {connect} from "react-redux";
-import {addFavorite, removeFavorite} from "../actions";
+import {addFavorite, removeFavorite,} from "../actions";
 
 class Videos extends Component {
   constructor(props) {
@@ -35,7 +35,6 @@ class Videos extends Component {
     }) !== undefined
       ? fav = true
       : fav = false;
-    console.log(video.id);
     return (<div key={video.id} className={fav
         ? "container favs"
         : "container"}>
@@ -64,7 +63,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = {
   addFavorite,
-  removeFavorite
+  removeFavorite,
 };
 
 export const AppVideos = connect(mapStateToProps, mapDispatchToProps)(Videos);

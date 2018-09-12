@@ -29,7 +29,7 @@ class FindVideo extends Component {
     }
     if (found.length !== 0) {
       let vids = found.map((video) => {
-        return (<AppVideos content={video}/>)
+        return (<AppVideos key={video.id} content={video}/>)
       });
       return (vids)
     } else {
@@ -42,7 +42,7 @@ class FindVideo extends Component {
       <div className="FindVideo">
         <div className="head">
           <div className="close" onClick={() => {
-              document.body.classList.remove('scrolllock')
+              document.body.classList.remove('scrolllock');
               this.props.showResultsChange(false);
             }}>X</div>
           <h3>RESULTS</h3>
