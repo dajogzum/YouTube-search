@@ -10,3 +10,15 @@ Nie skupiałem się zbytnio na wizualnej reprezentacji strony - wygląd jest bar
 
 
 ![Podgląd](https://screenshotscdn.firefoxusercontent.com/images/9dfbf6e2-f0e8-4d3b-8481-1a96668bbd31.jpg)
+
+## Instalacja
+Należy sklonować repozytorium i w wybranym miejscu użyć:
+
+```
+npm install
+```
+
+Aby uruchomić aplikację należy przejść do głównego folderu i:
+```
+npm start
+```
