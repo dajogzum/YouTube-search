@@ -21,9 +21,10 @@ class Panel extends Component {
     super(props)
     this.request = this.request.bind(this);
     this.showFavs = this.showFavs.bind(this);
-    this.findVideo = this.findVideo.bind(this);
     this.handleSortingChange = this.handleSortingChange.bind(this);
     this.handleMaxResultsChange = this.handleMaxResultsChange.bind(this);
+    this.handleKeyPressFind = this.handleKeyPressFind.bind(this);
+    this.handleKeyPressSearch = this.handleKeyPressSearch.bind(this);
   }
 
   async request() {
@@ -67,11 +68,21 @@ class Panel extends Component {
     this.startSorting();
   }
 
-  findVideo() {}
+  handleKeyPressSearch = (event) => {
+    if (event.key === 'Enter') {
+      this.request()
+    }
+  }
+
+  handleKeyPressFind = (event) => {
+    if (event.key === 'Enter') {
+      this.props.showResultsChange(true);
+    }
+  }
 
   render() {
     return (<div className="panel-top">
-      <input onChange={(event) => {
+      <input onKeyPress={this.handleKeyPressSearch} onChange={(event) => {
           this.props.queryInput(event.target.value);
         }} placeholder="Search..." className="search" type="text"></input>
       <button onClick={this.request}>Search</button>
@@ -93,7 +104,7 @@ class Panel extends Component {
       <div className="separator"></div>
       <button onClick={this.showFavs}>Favorites</button>
       <div className="separator"></div>
-      <input onChange={(event) => {
+      <input onKeyPress={this.handleKeyPressFind} onChange={(event) => {
           this.props.findTitleInput(event.target.value);
         }} placeholder="Find Video by Title..." className="search" type="text"></input>
       <button onClick={() => {
